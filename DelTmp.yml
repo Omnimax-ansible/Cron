@@ -7,6 +7,7 @@
     - name: "delete tmp file over 30 days old"
       cron:
         name: Delete tmp files over 30 days
+        user: root
         minute: "0"
         hour: "4"
         job: "/bin/find /tmp -mtime +30 | sort -r |xargs /usr/bin/rm -r"
