@@ -4,8 +4,10 @@
   become: yes
 
   tasks:
-    cron:
-    name: "delete tmp file over 30 days old"
-    minute: "0"
-    hour: "4"
-    job: "/bin/find /tmp -mtime +30 | sort -r |xargs /usr/bin/rm -r"
+    - name: "delete tmp file over 30 days old"
+      cron:
+        name: Delete tmp files over 30 days
+        minute: "0"
+        hour: "4"
+        job: "/bin/find /tmp -mtime +30 | sort -r |xargs /usr/bin/rm -r"
+        state: present
