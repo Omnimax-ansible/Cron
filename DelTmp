@@ -1,0 +1,11 @@
+---
+- name: Clean tmp files over 30 days
+  hosts: all
+  become: yes
+
+  tasks:
+    cron:
+    name: "delete tmp file over 30 days old"
+    minute: "0"
+    hour: "4"
+    job: "/bin/find /tmp -mtime +30 | sort -r |xargs /usr/bin/rm -r"
